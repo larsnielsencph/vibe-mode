@@ -1,0 +1,425 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		VBMD100000000000000001 /* VibeModeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = VBMD000000000000000001 /* VibeModeApp.swift */; };
+		VBMD100000000000000002 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = VBMD000000000000000002 /* AppModel.swift */; };
+		VBMD100000000000000003 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = VBMD000000000000000003 /* MenuBarView.swift */; };
+		VBMD100000000000000004 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = VBMD000000000000000004 /* SettingsView.swift */; };
+		VBMD100000000000000005 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = VBMD000000000000000005 /* SettingsStore.swift */; };
+		VBMD100000000000000006 /* Allowlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = VBMD000000000000000006 /* Allowlist.swift */; };
+		VBMD100000000000000007 /* AppQuitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = VBMD000000000000000007 /* AppQuitter.swift */; };
+		VBMD100000000000000008 /* ListeningPorts.swift in Sources */ = {isa = PBXBuildFile; fileRef = VBMD000000000000000008 /* ListeningPorts.swift */; };
+		VBMD100000000000000009 /* KeepAwake.swift in Sources */ = {isa = PBXBuildFile; fileRef = VBMD000000000000000009 /* KeepAwake.swift */; };
+		VBMD10000000000000000A /* Privilege.swift in Sources */ = {isa = PBXBuildFile; fileRef = VBMD00000000000000000A /* Privilege.swift */; };
+		VBMD10000000000000000B /* Safety.swift in Sources */ = {isa = PBXBuildFile; fileRef = VBMD00000000000000000B /* Safety.swift */; };
+		VBMD10000000000000000C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = VBMD00000000000000000C /* Assets.xcassets */; };
+		VBMD10000000000000000D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = VBMD00000000000000000D /* IOKit.framework */; };
+		VBMD10000000000000000E /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = VBMD00000000000000000E /* CoreWLAN.framework */; };
+		VBMD10000000000000000F /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = VBMD00000000000000000F /* ServiceManagement.framework */; };
+		VBMD100000000000000010 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = VBMD000000000000000010 /* UserNotifications.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		VBMD000000000000000001 /* VibeModeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeModeApp.swift; sourceTree = "<group>"; };
+		VBMD000000000000000002 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		VBMD000000000000000003 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		VBMD000000000000000004 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		VBMD000000000000000005 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		VBMD000000000000000006 /* Allowlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allowlist.swift; sourceTree = "<group>"; };
+		VBMD000000000000000007 /* AppQuitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppQuitter.swift; sourceTree = "<group>"; };
+		VBMD000000000000000008 /* ListeningPorts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeningPorts.swift; sourceTree = "<group>"; };
+		VBMD000000000000000009 /* KeepAwake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepAwake.swift; sourceTree = "<group>"; };
+		VBMD00000000000000000A /* Privilege.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privilege.swift; sourceTree = "<group>"; };
+		VBMD00000000000000000B /* Safety.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Safety.swift; sourceTree = "<group>"; };
+		VBMD00000000000000000C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		VBMD00000000000000000D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		VBMD00000000000000000E /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
+		VBMD00000000000000000F /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		VBMD000000000000000010 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		VBMD000000000000000011 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		VBMD000000000000000012 /* VibeMode.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VibeMode.entitlements; sourceTree = "<group>"; };
+		VBMD200000000000000001 /* VibeMode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VibeMode.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		VBMD300000000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				VBMD10000000000000000D /* IOKit.framework in Frameworks */,
+				VBMD10000000000000000E /* CoreWLAN.framework in Frameworks */,
+				VBMD10000000000000000F /* ServiceManagement.framework in Frameworks */,
+				VBMD100000000000000010 /* UserNotifications.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		VBMD400000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				VBMD400000000000000002 /* VibeMode */,
+				VBMD400000000000000003 /* Frameworks */,
+				VBMD400000000000000004 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		VBMD400000000000000002 /* VibeMode */ = {
+			isa = PBXGroup;
+			children = (
+				VBMD000000000000000001 /* VibeModeApp.swift */,
+				VBMD000000000000000002 /* AppModel.swift */,
+				VBMD000000000000000003 /* MenuBarView.swift */,
+				VBMD000000000000000004 /* SettingsView.swift */,
+				VBMD000000000000000005 /* SettingsStore.swift */,
+				VBMD000000000000000006 /* Allowlist.swift */,
+				VBMD000000000000000007 /* AppQuitter.swift */,
+				VBMD000000000000000008 /* ListeningPorts.swift */,
+				VBMD000000000000000009 /* KeepAwake.swift */,
+				VBMD00000000000000000A /* Privilege.swift */,
+				VBMD00000000000000000B /* Safety.swift */,
+				VBMD00000000000000000C /* Assets.xcassets */,
+				VBMD000000000000000011 /* Info.plist */,
+				VBMD000000000000000012 /* VibeMode.entitlements */,
+			);
+			path = VibeMode;
+			sourceTree = "<group>";
+		};
+		VBMD400000000000000003 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				VBMD00000000000000000D /* IOKit.framework */,
+				VBMD00000000000000000E /* CoreWLAN.framework */,
+				VBMD00000000000000000F /* ServiceManagement.framework */,
+				VBMD000000000000000010 /* UserNotifications.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		VBMD400000000000000004 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				VBMD200000000000000001 /* VibeMode.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		VBMD500000000000000001 /* VibeMode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = VBMD700000000000000002 /* Build configuration list for PBXNativeTarget "VibeMode" */;
+			buildPhases = (
+				VBMD300000000000000001 /* Sources */,
+				VBMD300000000000000002 /* Frameworks */,
+				VBMD300000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VibeMode;
+			productName = VibeMode;
+			productReference = VBMD200000000000000001 /* VibeMode.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		VBMD500000000000000000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					VBMD500000000000000001 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = VBMD700000000000000001 /* Build configuration list for PBXProject "VibeMode" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				da,
+			);
+			mainGroup = VBMD400000000000000001;
+			productRefGroup = VBMD400000000000000004 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				VBMD500000000000000001 /* VibeMode */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		VBMD300000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				VBMD10000000000000000C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		VBMD300000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				VBMD100000000000000001 /* VibeModeApp.swift in Sources */,
+				VBMD100000000000000002 /* AppModel.swift in Sources */,
+				VBMD100000000000000003 /* MenuBarView.swift in Sources */,
+				VBMD100000000000000004 /* SettingsView.swift in Sources */,
+				VBMD100000000000000005 /* SettingsStore.swift in Sources */,
+				VBMD100000000000000006 /* Allowlist.swift in Sources */,
+				VBMD100000000000000007 /* AppQuitter.swift in Sources */,
+				VBMD100000000000000008 /* ListeningPorts.swift in Sources */,
+				VBMD100000000000000009 /* KeepAwake.swift in Sources */,
+				VBMD10000000000000000A /* Privilege.swift in Sources */,
+				VBMD10000000000000000B /* Safety.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		VBMD600000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		VBMD600000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		VBMD600000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VibeMode/VibeMode.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VibeMode/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VibeMode;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Lars";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dk.lars.vibemode;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = targeted;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		VBMD600000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VibeMode/VibeMode.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VibeMode/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VibeMode;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Lars";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dk.lars.vibemode;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = targeted;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		VBMD700000000000000001 /* Build configuration list for PBXProject "VibeMode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				VBMD600000000000000001 /* Debug */,
+				VBMD600000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		VBMD700000000000000002 /* Build configuration list for PBXNativeTarget "VibeMode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				VBMD600000000000000003 /* Debug */,
+				VBMD600000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = VBMD500000000000000000 /* Project object */;
+}
