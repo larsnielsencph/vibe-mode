@@ -106,4 +106,10 @@ VibeMode.xcodeproj/     Xcode project (arm64, macOS 14)
 VibeMode/               Swift sources, Info.plist, entitlements
 scripts/                emergency restore + optional sudoers installer
 INSTALL-DA.md           Danish install guide
+LICENSE                 MIT (Lars Nielsen)
 ```
+
+## License
+
+[MIT](LICENSE) © 2026 Lars Nielsen
+
