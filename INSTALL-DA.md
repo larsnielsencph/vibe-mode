@@ -7,7 +7,7 @@ Denne guide er skrevet, så du kan bygge og køre appen på din egen MacBook Air
 VibeMode bor i menulinjen (ingen Dock-ikon).
 
 - **Normal mode** — Mac’en sover, når du klapper låget i, præcis som standard-macOS. Når du skifter tilbage til Normal, gendannes den oprindelige `SleepDisabled`-værdi, og alle keep-awake-hold slippes.
-- **Vibe mode** — Mac’en bliver vågen med lukket låg, netværk (Wi-Fi / iPhone-hotspot) holdes i live, og alle almindelige apps bliver bedt om at afslutte **undtagen** din allowlist (Claude, Cursor, Terminal, iTerm2, Warp, Ghostty som udgangspunkt) plus alt, der lytter på en lokal TCP-port (dev-servers).
+- **Vibe mode** — Mac’en bliver vågen med lukket låg, netværk (Wi-Fi / iPhone-hotspot) holdes i live, og alle almindelige apps bliver bedt om at afslutte **undtagen** din allowlist (ChatGPT, Codex, Claude, Cursor, Grok Bot, Terminal, iTerm2, Warp, Ghostty som udgangspunkt) plus alt, der lytter på en lokal TCP-port (dev-servers). Slack, Safari og Mail bliver stadig bedt om at Quit — AI- og kodningsværktøjer bliver det ikke.
 
 Ikonet skifter: måne = Normal, lyn = Vibe.
 
@@ -96,7 +96,7 @@ sudo -n pmset -a disablesleep 0 && echo OK
 
 Typisk flow, når du går:
 
-1. Cursor / Claude / terminaler kører. Dev-server lytter på en port.
+1. ChatGPT / Codex / Cursor / Claude / Grok Bot / terminaler kører. Dev-server lytter på en port.
 2. Tilslut iPhone-hotspot.
 3. Vibe mode → bekræft quit-listen.
 4. Klap låget. Mac’en skal blive ved med at trække strøm (ventilator kan køre). Læg den et sted med lidt luft, ikke under dynen.

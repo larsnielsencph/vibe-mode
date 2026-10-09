@@ -120,6 +120,17 @@ enum AppQuitter {
         }) {
             return .allowlist(item.name)
         }
+        if let item = AllowlistItem.factoryDefaults.first(where: { factory in
+            AllowlistItem.requiredAgentNames.contains(where: {
+                $0.caseInsensitiveCompare(factory.name) == .orderedSame
+            }) && factory.matches(
+                bundleID: app.bundleIdentifier,
+                localizedName: app.localizedName,
+                processName: processName
+            )
+        }) {
+            return .allowlist(item.name)
+        }
 
         if listenerPIDs.contains(app.processIdentifier), let listener = listenerByPID[app.processIdentifier] {
             return .listeningPort(listener.shortLabel)

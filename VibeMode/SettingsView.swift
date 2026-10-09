@@ -63,7 +63,7 @@ struct SettingsView: View {
 
     private var allowlistTab: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Apps on this list stay open in Vibe mode, together with anything already listening on a local TCP port (dev servers). Everything else that looks like a normal app is asked to Quit.")
+            Text("Apps on this list stay open in Vibe mode, together with anything already listening on a local TCP port (dev servers). ChatGPT, Codex, Claude, Cursor, Grok Bot and their helpers are included by default. Safari, Slack, Mail and similar stay off the list and are asked to Quit.")
                 .font(.callout)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
