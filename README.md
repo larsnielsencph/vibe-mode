@@ -5,9 +5,9 @@ A native macOS menu bar app for Apple Silicon MacBook Air (macOS 14+). It has tw
 - **Normal** — stock macOS. Closing the lid sleeps the Mac. Switching back to Normal restores the original `SleepDisabled` value and drops every keep-awake hold.
 - **Vibe** — the Mac stays awake with the lid closed, Wi-Fi / iPhone Personal Hotspot stays up, and non-coding apps are asked to Quit so a closed laptop in a bag keeps agents, terminals, and dev servers alive without hauling Safari, Slack, and Mail along for the ride.
 
-Danish step-by-step build guide: **[INSTALL-DA.md](INSTALL-DA.md)**.
+Danish step-by-step install from GitHub: **[INSTALL-DA.md](INSTALL-DA.md)**.
 
-This project is a local Xcode app. It is not a website; open `VibeMode.xcodeproj` on a Mac.
+Private repo: [github.com/larsnielsencph/vibe-mode](https://github.com/larsnielsencph/vibe-mode). This is a local Xcode app, not a website and not on the App Store.
 
 ## Closed-lid wake: what we chose
 
@@ -58,7 +58,7 @@ On the first Vibe switch (and later, unless you tick “Don’t ask again”) a 
 Left alone:
 
 - This app, Finder, Dock, loginwindow, and anything under `/System/Library`
-- Default allowlist: **Claude** (desktop + `claude` CLI name), **Cursor**, **Terminal**, **iTerm2**, **Warp**, **Ghostty**
+- Default allowlist: **ChatGPT/Codex**, **Cursor**, **Claude**, **Grok Bot**, **Gemini**, **Perplexity**, **Terminal**, **iTerm2**, **Warp**, **Ghostty**
 - Any process **listening on a local TCP port** (dev servers, etc.)
 
 Edit the list in **Settings → Allowlist** (pick an `.app` from `/Applications`).
@@ -80,14 +80,22 @@ Edit the list in **Settings → Allowlist** (pick an `.app` from `/Applications`
 
 See [INSTALL-DA.md](INSTALL-DA.md) (Danish, written for Lars) or:
 
+```bash
+git clone https://github.com/larsnielsencph/vibe-mode.git
+cd vibe-mode
+./scripts/install-local.sh
+```
+
+That builds a Release app with the rocket icon and copies it to `/Applications/VibeMode.app`. Look in the menu bar (no Dock icon).
+
+Alternatively:
+
 1. Open `VibeMode.xcodeproj` in Xcode.
 2. Signing: the project ships **ad-hoc** (`Sign to Run Locally` / `CODE_SIGN_IDENTITY = "-"`). That is enough to run on the Mac that built it. You can switch to your Personal Team if Xcode complains.
 3. Product → Run (⌘R). A moon icon appears in the menu bar; there is no Dock icon.
-4. Click **Vibe mode**. Confirm the quit list. Enter an admin password when macOS asks.
+4. Click **Vibe mode**. If Wi-Fi/hotspot is missing, cancel and join it first. Confirm the quit list. Enter an admin password when macOS asks.
 5. Optional: Settings → Power → **Install password-free toggle + boot safety net**.
 6. Optional: enable **Launch VibeMode at login**.
-
-Copy the built app to `/Applications` if you want it to survive Xcode’s Run session (`Product → Archive` is unnecessary for personal use; drag `VibeMode.app` from the Products group, or use **Product → Show Build Folder in Finder**).
 
 ## Limitations
 
@@ -104,8 +112,8 @@ Copy the built app to `/Applications` if you want it to survive Xcode’s Run se
 ```
 VibeMode.xcodeproj/     Xcode project (arm64, macOS 14)
 VibeMode/               Swift sources, Info.plist, entitlements
-scripts/                emergency restore + optional sudoers installer
-INSTALL-DA.md           Danish install guide
+scripts/                install-local.sh, emergency restore, optional sudoers
+INSTALL-DA.md           Danish GitHub install guide
 LICENSE                 MIT (Lars Nielsen)
 ```
 

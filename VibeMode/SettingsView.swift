@@ -52,6 +52,7 @@ struct SettingsView: View {
 
             Section("Now") {
                 LabeledContent("Battery", value: model.batteryText)
+                LabeledContent("Network", value: NetworkReadiness.current().menuLabel)
                 LabeledContent("Power", value: model.safety.isOnAC ? "Power adapter" : "Battery")
                 LabeledContent("Heat", value: model.thermalText)
                 LabeledContent("Mode", value: model.isVibeMode ? "Vibe" : "Normal")

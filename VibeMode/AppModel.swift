@@ -111,6 +111,14 @@ final class AppModel: ObservableObject {
 
     func enableVibe() async {
         lastError = nil
+        let network = NetworkReadiness.current()
+        if network.shouldWarnBeforeVibe {
+            if !ConfirmNetwork.run(network) {
+                statusLine = "Normal · \(network.menuLabel)"
+                lastError = "Join Wi-Fi/hotspot before closing the lid."
+                return
+            }
+        }
         listeners = ListeningPorts.current()
         let toQuit = AppQuitter.appsToQuit(allowlist: settings.allowlist, listeners: listeners)
 
@@ -244,10 +252,11 @@ final class AppModel: ObservableObject {
         launchAtLogin = LoginItem.isEnabled()
 
         let kept = keptSummary()
+        let network = NetworkReadiness.current().menuLabel
         if isVibeMode {
-            statusLine = "Battery \(batteryText) · keeping \(kept)"
+            statusLine = "Battery \(batteryText) · \(network) · keeping \(kept)"
         } else {
-            statusLine = "Battery \(batteryText) · Normal"
+            statusLine = "Battery \(batteryText) · Normal · \(network)"
         }
     }
 

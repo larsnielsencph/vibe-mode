@@ -18,11 +18,13 @@
 		VBMD100000000000000009 /* KeepAwake.swift in Sources */ = {isa = PBXBuildFile; fileRef = VBMD000000000000000009 /* KeepAwake.swift */; };
 		VBMD10000000000000000A /* Privilege.swift in Sources */ = {isa = PBXBuildFile; fileRef = VBMD00000000000000000A /* Privilege.swift */; };
 		VBMD10000000000000000B /* Safety.swift in Sources */ = {isa = PBXBuildFile; fileRef = VBMD00000000000000000B /* Safety.swift */; };
+		VBMD100000000000000013 /* NetworkReadiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = VBMD000000000000000013 /* NetworkReadiness.swift */; };
 		VBMD10000000000000000C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = VBMD00000000000000000C /* Assets.xcassets */; };
 		VBMD10000000000000000D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = VBMD00000000000000000D /* IOKit.framework */; };
 		VBMD10000000000000000E /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = VBMD00000000000000000E /* CoreWLAN.framework */; };
 		VBMD10000000000000000F /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = VBMD00000000000000000F /* ServiceManagement.framework */; };
 		VBMD100000000000000010 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = VBMD000000000000000010 /* UserNotifications.framework */; };
+		VBMD100000000000000014 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = VBMD000000000000000014 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,11 +39,13 @@
 		VBMD000000000000000009 /* KeepAwake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepAwake.swift; sourceTree = "<group>"; };
 		VBMD00000000000000000A /* Privilege.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privilege.swift; sourceTree = "<group>"; };
 		VBMD00000000000000000B /* Safety.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Safety.swift; sourceTree = "<group>"; };
+		VBMD000000000000000013 /* NetworkReadiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReadiness.swift; sourceTree = "<group>"; };
 		VBMD00000000000000000C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		VBMD00000000000000000D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		VBMD00000000000000000E /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
 		VBMD00000000000000000F /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		VBMD000000000000000010 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		VBMD000000000000000014 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		VBMD000000000000000011 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		VBMD000000000000000012 /* VibeMode.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VibeMode.entitlements; sourceTree = "<group>"; };
 		VBMD200000000000000001 /* VibeMode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VibeMode.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +60,7 @@
 				VBMD10000000000000000E /* CoreWLAN.framework in Frameworks */,
 				VBMD10000000000000000F /* ServiceManagement.framework in Frameworks */,
 				VBMD100000000000000010 /* UserNotifications.framework in Frameworks */,
+				VBMD100000000000000014 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +90,7 @@
 				VBMD000000000000000009 /* KeepAwake.swift */,
 				VBMD00000000000000000A /* Privilege.swift */,
 				VBMD00000000000000000B /* Safety.swift */,
+				VBMD000000000000000013 /* NetworkReadiness.swift */,
 				VBMD00000000000000000C /* Assets.xcassets */,
 				VBMD000000000000000011 /* Info.plist */,
 				VBMD000000000000000012 /* VibeMode.entitlements */,
@@ -99,6 +105,7 @@
 				VBMD00000000000000000E /* CoreWLAN.framework */,
 				VBMD00000000000000000F /* ServiceManagement.framework */,
 				VBMD000000000000000010 /* UserNotifications.framework */,
+				VBMD000000000000000014 /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -192,6 +199,7 @@
 				VBMD100000000000000009 /* KeepAwake.swift in Sources */,
 				VBMD10000000000000000A /* Privilege.swift in Sources */,
 				VBMD10000000000000000B /* Safety.swift in Sources */,
+				VBMD100000000000000013 /* NetworkReadiness.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,3 +26,6 @@ Icon?
 *.swp
 *.swo
 agent-tools/
+
+# Accidental nested clone
+/vibe-mode/

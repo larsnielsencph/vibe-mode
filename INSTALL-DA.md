@@ -1,17 +1,66 @@
 # VibeMode — installationsguide til Lars
 
-Denne guide er skrevet, så du kan bygge og køre appen på din egen MacBook Air (Apple Silicon, macOS 14 eller nyere) med Xcode. Du behøver ikke en betalt Apple Developer-konto.
+Denne guide er skrevet, så du kan hente appen fra GitHub og installere den på din egen MacBook Air (Apple Silicon, macOS 14 eller nyere). Du behøver **ikke** App Store til VibeMode, og du behøver **ikke** en betalt Apple Developer-konto. Du bygger appen én gang med Xcode (gratis) og lægger den i Programmer.
+
+Repo: [github.com/larsnielsencph/vibe-mode](https://github.com/larsnielsencph/vibe-mode)
 
 ## Hvad appen gør
 
-VibeMode bor i menulinjen (ingen Dock-ikon).
+VibeMode bor i menulinjen (ingen Dock-ikon). App-ikonet er en hvid raket på indigo.
 
 - **Normal mode** — Mac’en sover, når du klapper låget i, præcis som standard-macOS. Når du skifter tilbage til Normal, gendannes den oprindelige `SleepDisabled`-værdi, og alle keep-awake-hold slippes.
-- **Vibe mode** — Mac’en bliver vågen med lukket låg, netværk (Wi-Fi / iPhone-hotspot) holdes i live, og alle almindelige apps bliver bedt om at afslutte **undtagen** din allowlist (Claude, Cursor, Terminal, iTerm2, Warp, Ghostty som udgangspunkt) plus alt, der lytter på en lokal TCP-port (dev-servers).
+- **Vibe mode** — Mac’en bliver vågen med lukket låg, netværk (Wi-Fi / iPhone-hotspot) holdes i live, og alle almindelige apps bliver bedt om at afslutte **undtagen** din allowlist (ChatGPT/Codex, Cursor, Claude, Grok Bot, Gemini, Perplexity, Terminal, iTerm2, Warp, Ghostty som udgangspunkt) plus alt, der lytter på en lokal TCP-port (dev-servers). Hvis Wi-Fi/hotspot mangler, advarer appen, før den skifter.
 
-Ikonet skifter: måne = Normal, lyn = Vibe.
+Menulinje-ikonet skifter: måne = Normal, lyn = Vibe.
 
-## 1. Installer Xcode
+## Installér fra GitHub (første gang)
+
+Tre trin. Kopiér kommandoerne præcis.
+
+### 1. Installer Xcode
+
+1. Åbn **App Store** på Mac’en.
+2. Søg efter **Xcode** og installer (det er stort; giv det tid).
+3. Åbn Xcode **én gang**, acceptér licensen, og lad den installere *Additional Components*.
+
+### 2. Hent koden
+
+**Nemmest i browser:** log ind på GitHub → åbn [github.com/larsnielsencph/vibe-mode](https://github.com/larsnielsencph/vibe-mode) → den grønne **Code**-knap → **Download ZIP**. Pak filen ud, så du har mappen `vibe-mode`.
+
+**Eller i Terminal** (hvis git er installeret):
+
+```bash
+cd ~/Downloads
+git clone https://github.com/larsnielsencph/vibe-mode.git
+cd vibe-mode
+```
+
+Repoet er privat, så GitHub skal kende dig (browser-login, eller `gh auth login` i Terminal).
+
+### 3. Byg og læg appen i Programmer
+
+I Terminal, inde i mappen `vibe-mode`:
+
+```bash
+chmod +x scripts/install-local.sh
+./scripts/install-local.sh
+```
+
+Scriptet bygger appen og lægger `VibeMode.app` i **Programmer**. Kig i **menulinjen** (øverst til højre) efter VibeMode. Der kommer **ikke** et ikon i Dock.
+
+Hvis scriptet fejler: dobbeltklik `VibeMode.xcodeproj`, vælg scheme **VibeMode** og destination **My Mac**, tryk **Product → Build** (⌘B), og følg punkt 9 nedenfor.
+
+### 4. Første gang du bruger den
+
+1. Tilslut iPhone-hotspot **før** du slår Vibe til.
+2. Klik på menulinje-ikonet → **Vibe mode**.
+3. Hvis der ikke er Wi-Fi/hotspot, får du en advarsel. **Cancel** er det rigtige, indtil nettet er på.
+4. Bekræft listen over apps, der skal quitte. Giv admin-adgangskode, når macOS spørger (`SleepDisabled`).
+5. I Settings: slå **Launch VibeMode at login** til.
+
+Når det virker, behøver du ikke GitHub eller Xcode til daglig brug. Xcode skal du kun bruge, hvis du henter en ny version og kører `./scripts/install-local.sh` igen.
+
+## 1. Installer Xcode (detaljer)
 
 1. Åbn **App Store** på Mac’en.
 2. Søg efter **Xcode** og installer (det er stort; giv det tid).
@@ -31,7 +80,7 @@ sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 
 ## 2. Hent projektet
 
-Hvis du har mappen som et git-checkout, er du allerede i mål. Ellers: åbn den mappe, der indeholder `VibeMode.xcodeproj`.
+Se **Installér fra GitHub** øverst. Når mappen indeholder `VibeMode.xcodeproj`, er du klar.
 
 ## 3. Åbn projektet i Xcode
 
@@ -125,14 +174,20 @@ Der ligger en kopi i `scripts/emergency-restore-sleep.sh`.
 
 ## 9. Læg appen i Programmvinduet
 
-Når du er tilfreds:
+Nemmest:
 
-1. I Xcode: **Product → Build** (⌘B).
+```bash
+./scripts/install-local.sh
+```
+
+Manuelt i Xcode:
+
+1. **Product → Build** (⌘B).
 2. I venstre kolonne: **Products → VibeMode.app** → højreklik → **Show in Finder**.
 3. Træk `VibeMode.app` til `/Programmer` (Applications).
 4. Åbn derfra fremover. Slå **Launch at login** til i Settings.
 
-Lad Xcode-debug-sessionen køre, mens du tester; når du quitter Xcode, dør den kørende debug-app.
+Lad Xcode-debug-sessionen køre, mens du tester; når du quitter Xcode, dør den kørende debug-app. Brug appen fra Programmer til daglig brug.
 
 ## 10. Afinstallation
 
