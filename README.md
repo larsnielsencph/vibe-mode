@@ -86,7 +86,7 @@ cd vibe-mode
 ./scripts/install-local.sh
 ```
 
-That builds a Release app with the rocket icon and copies it to `/Applications/VibeMode.app`. Look in the menu bar (no Dock icon).
+That builds a Release app with the monochrome rocket icon and copies it to `/Applications/VibeMode.app`. Look in the menu bar (no Dock icon). The shared artwork and regeneration script are documented in [Branding/README.md](Branding/README.md).
 
 Alternatively:
 
