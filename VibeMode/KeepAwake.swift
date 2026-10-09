@@ -241,7 +241,7 @@ final class KeepAwake {
 
     private func tryKeepWiFiPowered() {
         guard let iface = CWWiFiClient.shared().interface() else { return }
-        if iface.powerOn { return }
+        if iface.powerOn() { return }
         try? iface.setPower(true)
     }
 
