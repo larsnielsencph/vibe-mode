@@ -1,5 +1,6 @@
 import CoreWLAN
 import Darwin
+import Darwin.Mach
 import Foundation
 import IOKit
 import IOKit.ps
@@ -198,7 +199,7 @@ final class KeepAwake {
         let kr = inputs.withUnsafeBufferPointer { buf -> kern_return_t in
             IOConnectCallScalarMethod(
                 ioConnect,
-                12,
+                UInt32(12),
                 buf.baseAddress,
                 1,
                 nil,
@@ -215,7 +216,7 @@ final class KeepAwake {
         guard service != 0 else { return false }
         ioService = service
         var connect: io_connect_t = 0
-        let kr = IOServiceOpen(service, mach_task_self_, 0, &connect)
+        let kr = IOServiceOpen(service, mach_task_self(), 0, &connect)
         guard kr == KERN_SUCCESS else {
             IOObjectRelease(service)
             ioService = 0
