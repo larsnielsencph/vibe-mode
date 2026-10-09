@@ -44,8 +44,15 @@ enum SettingsDisk {
 
     static func load() -> SettingsStore {
         guard let data = try? Data(contentsOf: fileURL) else { return .default }
-        let decoded = try? JSONDecoder().decode(SettingsStore.self, from: data)
-        return decoded ?? .default
+        guard var decoded = try? JSONDecoder().decode(SettingsStore.self, from: data) else {
+            return .default
+        }
+        let merged = AllowlistItem.mergingFactoryDefaults(into: decoded.allowlist)
+        if merged != decoded.allowlist {
+            decoded.allowlist = merged
+            save(decoded)
+        }
+        return decoded
     }
 
     static func save(_ store: SettingsStore) {

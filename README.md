@@ -58,7 +58,7 @@ On the first Vibe switch (and later, unless you tick “Don’t ask again”) a 
 Left alone:
 
 - This app, Finder, Dock, loginwindow, and anything under `/System/Library`
-- Default allowlist: **Claude** (desktop + `claude` CLI name), **Cursor**, **Terminal**, **iTerm2**, **Warp**, **Ghostty**
+- Default allowlist: **ChatGPT**, **Codex**, **Claude**, **Cursor**, **Grok Bot**, **Terminal**, **iTerm2**, **Warp**, **Ghostty** (helpers of those apps stay too). An older saved list is merged with these on launch.
 - Any process **listening on a local TCP port** (dev servers, etc.)
 
 Edit the list in **Settings → Allowlist** (pick an `.app` from `/Applications`).

@@ -163,7 +163,7 @@ enum ConfirmQuit {
         } else {
             let listed = appNames.prefix(18).joined(separator: "\n")
             let extra = appNames.count > 18 ? "\n…and \(appNames.count - 18) more" : ""
-            alert.informativeText = "These apps will be asked to quit (normal Quit, so they can save):\n\n\(listed)\(extra)\n\nFinder, system processes, VibeMode, allowlisted apps, and anything listening on a local TCP port are left alone."
+            alert.informativeText = "These apps will be asked to quit (normal Quit, so they can save):\n\n\(listed)\(extra)\n\nFinder, system processes, VibeMode, coding agents (ChatGPT, Codex, Claude, Cursor, Grok Bot), allowlisted apps, and anything listening on a local TCP port are left alone."
         }
         alert.addButton(withTitle: "Quit apps and start Vibe")
         alert.addButton(withTitle: "Cancel")

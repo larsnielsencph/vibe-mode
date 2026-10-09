@@ -42,8 +42,12 @@ def check_layout() -> None:
         error("deployment target is not 14.0")
     if "ENABLE_APP_SANDBOX = NO" not in pbx:
         error("sandbox must be off")
-    if "ARCHS = arm64" not in pbx:
-        error("ARCHS must be arm64")
+    arch_lines = [
+        line for line in pbx.splitlines()
+        if "ARCHS" in line and "ALWAYS_SEARCH" not in line and "ONLY_ACTIVE_ARCH" not in line
+    ]
+    if arch_lines and not any("arm64" in line or "ARCHS_STANDARD" in line for line in arch_lines):
+        error("ARCHS must include arm64")
 
     for path in swift:
         if path.name not in pbx:
@@ -126,19 +130,62 @@ def parse_lsof_fields(output: str) -> list[tuple[int, str, str, str]]:
     return results
 
 
+def display_name_matches(candidate: str, stem: str) -> bool:
+    value = candidate.strip()
+    stem = stem.strip()
+    if not value or not stem:
+        return False
+    if value.lower() == stem.lower():
+        return True
+    lower = value.lower()
+    stem_lower = stem.lower()
+    return lower.startswith(stem_lower + " ") or lower.startswith(stem_lower + "-")
+
+
+def bundle_id_matches(bundle_id: str, allowed: list[str]) -> bool:
+    needle = bundle_id.strip()
+    if not needle:
+        return False
+    for allowed_id in allowed:
+        if not allowed_id:
+            continue
+        if needle.lower() == allowed_id.lower():
+            return True
+        if needle.lower().startswith(allowed_id.lower() + "."):
+            return True
+    return False
+
+
 def allowlist_matches(bundle_ids: list[str], process_names: list[str], name: str,
                       bundle_id: str | None, localized: str | None, process: str | None) -> bool:
-    if bundle_id and any(bundle_id.lower() == b.lower() for b in bundle_ids):
+    if bundle_id and bundle_id_matches(bundle_id, bundle_ids):
         return True
     for candidate in (localized, process):
         if not candidate:
             continue
         candidate = candidate.strip()
-        if any(candidate.lower() == p.lower() for p in process_names):
+        if any(display_name_matches(candidate, p) for p in process_names):
             return True
-        if candidate.lower() == name.lower():
+        if display_name_matches(candidate, name):
             return True
     return False
+
+
+def merge_factory(existing: list[dict], factory: list[dict]) -> list[dict]:
+    result = [dict(item) for item in existing]
+    for factory_item in factory:
+        for item in result:
+            if item["name"].lower() == factory_item["name"].lower():
+                for bid in factory_item["bundleIDs"]:
+                    if bid.lower() not in [b.lower() for b in item["bundleIDs"]]:
+                        item["bundleIDs"].append(bid)
+                for proc in factory_item["processNames"]:
+                    if proc.lower() not in [p.lower() for p in item["processNames"]]:
+                        item["processNames"].append(proc)
+                break
+        else:
+            result.append(dict(factory_item))
+    return result
 
 
 def check_parsers() -> None:
@@ -190,6 +237,60 @@ Python    19901 lars    3u  IPv4 0x111           0t0  TCP 127.0.0.1:8000 (LISTEN
         None, "Claude", "Claude",
     ):
         error("Claude should match by process name")
+
+    chatgpt_ids = ["com.openai.chat", "com.openai.chatgpt", "com.openai.codex"]
+    if not allowlist_matches(
+        chatgpt_ids, ["ChatGPT", "ChatGPT Classic"], "ChatGPT",
+        "com.openai.codex", "ChatGPT", "ChatGPT",
+    ):
+        error("unified ChatGPT.app (com.openai.codex) should stay open")
+    if not allowlist_matches(
+        chatgpt_ids, ["ChatGPT", "ChatGPT Classic"], "ChatGPT",
+        "com.openai.chat", "ChatGPT Classic", "ChatGPT",
+    ):
+        error("ChatGPT Classic should stay open")
+    if not allowlist_matches(
+        chatgpt_ids, ["ChatGPT", "ChatGPT Classic"], "ChatGPT",
+        "com.openai.codex.helper", "ChatGPT Helper", "ChatGPT Helper (Renderer)",
+    ):
+        error("ChatGPT Electron helper should stay open")
+    if not allowlist_matches(
+        ["com.openai.codex", "com.openai.chat"], ["Codex", "codex"], "Codex",
+        "com.openai.codex", "Codex", "Codex",
+    ):
+        error("Codex desktop should stay open")
+    if not allowlist_matches(
+        ["com.anysphere.sand", "co.anysphere.grok-bot-computer-use"],
+        ["Grok Bot", "Grokbot", "Grok"],
+        "Grok Bot",
+        "com.anysphere.sand", "Grok Bot", "Grok Bot",
+    ):
+        error("Grok Bot should stay open")
+    if not allowlist_matches(
+        ["com.anysphere.sand", "co.anysphere.grok-bot-computer-use"],
+        ["Grok Bot", "Grokbot", "Grok"],
+        "Grok Bot",
+        "co.anysphere.grok-bot-computer-use", "Grok Bot Computer Use", "Grok Bot Computer Use",
+    ):
+        error("Grok Bot computer-use helper should stay open")
+    if allowlist_matches(
+        chatgpt_ids, ["ChatGPT", "ChatGPT Classic"], "ChatGPT",
+        "com.apple.Safari", "Safari", "Safari",
+    ):
+        error("Safari should not match ChatGPT allowlist")
+
+    old_list = [{"name": "Claude", "bundleIDs": ["com.anthropic.claude"], "processNames": ["Claude"]}]
+    factory = [
+        {"name": "ChatGPT", "bundleIDs": ["com.openai.codex"], "processNames": ["ChatGPT"]},
+        {"name": "Claude", "bundleIDs": ["com.anthropic.claude", "com.anthropic.claudefordesktop"], "processNames": ["Claude", "claude"]},
+    ]
+    merged = merge_factory(old_list, factory)
+    names = [item["name"] for item in merged]
+    if "ChatGPT" not in names:
+        error("factory merge should add ChatGPT to an older allowlist")
+    claude = next(item for item in merged if item["name"] == "Claude")
+    if "com.anthropic.claudefordesktop" not in claude["bundleIDs"]:
+        error("factory merge should union extra Claude bundle IDs")
 
 
 def check_no_force_kill() -> None:
