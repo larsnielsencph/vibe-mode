@@ -194,7 +194,7 @@ final class KeepAwake {
     @discardableResult
     private func applyClamshellOverride(disableLidSleep: Bool) -> Bool {
         if !ensureIOKitConnection() { return false }
-        var inputs: [UInt64] = [disableLidSleep ? 1 : 0]
+        let inputs: [UInt64] = [disableLidSleep ? 1 : 0]
         var outputCount: UInt32 = 0
         let kr = inputs.withUnsafeBufferPointer { buf -> kern_return_t in
             IOConnectCallScalarMethod(
