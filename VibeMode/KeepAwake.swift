@@ -216,7 +216,8 @@ final class KeepAwake {
         guard service != 0 else { return false }
         ioService = service
         var connect: io_connect_t = 0
-        let kr = IOServiceOpen(service, mach_task_self(), 0, &connect)
+        // C exposes mach_task_self() as a macro; Swift only imports mach_task_self_.
+        let kr = IOServiceOpen(service, mach_task_self_, 0, &connect)
         guard kr == KERN_SUCCESS else {
             IOObjectRelease(service)
             ioService = 0

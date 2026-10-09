@@ -42,8 +42,8 @@ enum AppQuitter {
     }
 
     static func classified(allowlist: [AllowlistItem], listeners: [ListeningProcess]) -> [RunningAppInfo] {
-        let listenerPIDs = Set(listeners.map(\.pid))
-        let listenerByPID = Dictionary(uniqueKeysWithValues: listeners.map { ($0.pid, $0) })
+        // One process often listens on several ports (and IPv4 + IPv6).
+        let listenersByPID = Dictionary(grouping: listeners, by: \.pid)
 
         return NSWorkspace.shared.runningApplications.compactMap { app -> RunningAppInfo? in
             guard isUserFacing(app) else { return nil }
@@ -55,8 +55,7 @@ enum AppQuitter {
                 reasonKept: keepReason(
                     for: app,
                     allowlist: allowlist,
-                    listenerPIDs: listenerPIDs,
-                    listenerByPID: listenerByPID
+                    listenersByPID: listenersByPID
                 )
             )
             return info
@@ -97,8 +96,7 @@ enum AppQuitter {
     private static func keepReason(
         for app: NSRunningApplication,
         allowlist: [AllowlistItem],
-        listenerPIDs: Set<Int32>,
-        listenerByPID: [Int32: ListeningProcess]
+        listenersByPID: [Int32: [ListeningProcess]]
     ) -> KeepReason? {
         if app.processIdentifier == ProcessInfo.processInfo.processIdentifier {
             return .thisApp
@@ -121,8 +119,8 @@ enum AppQuitter {
             return .allowlist(item.name)
         }
 
-        if listenerPIDs.contains(app.processIdentifier), let listener = listenerByPID[app.processIdentifier] {
-            return .listeningPort(listener.shortLabel)
+        if let found = listenersByPID[app.processIdentifier], !found.isEmpty {
+            return .listeningPort(listeningLabel(found))
         }
 
         return nil
@@ -151,6 +149,16 @@ enum AppQuitter {
             return true
         }
         return false
+    }
+
+    /// Prefer `node:3000,4173` over the first socket only.
+    static func listeningLabel(_ listeners: [ListeningProcess]) -> String {
+        var seen = Set<String>()
+        let ports = listeners.compactMap { item -> String? in
+            seen.insert(item.port).inserted ? item.port : nil
+        }
+        let command = listeners.first?.command ?? "listen"
+        return ports.isEmpty ? command : "\(command):\(ports.joined(separator: ","))"
     }
 
     private static func displayName(for app: NSRunningApplication) -> String {
