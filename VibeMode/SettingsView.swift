@@ -31,6 +31,16 @@ struct SettingsView: View {
                 Text("Recommended. After a reboot the app restores Normal so SleepDisabled cannot stick.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
+                Toggle("Use \(Biometrics.methodName) to switch modes", isOn: Binding(
+                    get: { model.settings.isTouchIDEnabled },
+                    set: { model.settings.useTouchID = $0 }
+                ))
+                .disabled(!Biometrics.isAvailable)
+                Text(Biometrics.isAvailable
+                     ? "Fingerprint instead of typing your Mac password. The first switch may still ask for the password once, so VibeMode can install a password-free helper. After that, \(Biometrics.methodName) is enough. Battery and heat auto-revert skip this."
+                     : "No fingerprint is enrolled on this Mac. Add one in System Settings → Touch ID, or keep using the password dialog.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
 
             Section("Safety") {
@@ -122,7 +132,7 @@ struct SettingsView: View {
                 Button("Install password-free toggle + boot safety net…") {
                     model.installPasswordlessHelper()
                 }
-                Text("Writes a visudo-checked rule that only allows `pmset -a disablesleep 0` and `… 1`, and a LaunchDaemon that clears the flag at boot. One admin password.")
+                Text("Writes a visudo-checked rule that only allows `pmset -a disablesleep 0` and `… 1`, and a LaunchDaemon that clears the flag at boot. One admin password — after that, mode switches use \(Biometrics.methodName) instead of typing your code.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
 

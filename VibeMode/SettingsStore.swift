@@ -15,6 +15,11 @@ struct SettingsStore: Codable, Equatable {
     /// if the previous session crashed before it could clean up.
     var vibeSessionDirty: Bool
 
+    /// Missing in older settings.json; treat as on.
+    var useTouchID: Bool?
+
+    var isTouchIDEnabled: Bool { useTouchID ?? true }
+
     static let `default` = SettingsStore(
         allowlist: AllowlistItem.factoryDefaults,
         batteryThresholdPercent: 15,
@@ -23,7 +28,8 @@ struct SettingsStore: Codable, Equatable {
         autoRevertOnCriticalHeat: true,
         sudoersInstalled: false,
         lastEnabledSleepDisabled: false,
-        vibeSessionDirty: false
+        vibeSessionDirty: false,
+        useTouchID: true
     )
 
     var clampedBatteryThreshold: Int {

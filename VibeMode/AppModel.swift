@@ -101,7 +101,7 @@ final class AppModel: ObservableObject {
 
     func selectNormal() {
         guard !isBusy else { return }
-        Task { await disableVibe(reason: "You switched back to Normal.") }
+        Task { await disableVibe(reason: "You switched back to Normal.", requireAuth: true) }
     }
 
     func selectVibe() {
@@ -133,12 +133,23 @@ final class AppModel: ObservableObject {
             }
         }
 
+        let allowed = await Biometrics.confirmSwitch(
+            enabled: settings.isTouchIDEnabled,
+            reason: "Switch VibeMode to Vibe"
+        )
+        if !allowed {
+            statusLine = "Normal · \(Biometrics.methodName) cancelled"
+            lastError = "\(Biometrics.methodName) was cancelled."
+            return
+        }
+
         isBusy = true
         defer { isBusy = false }
 
         do {
             settings.vibeSessionDirty = true
             let status = try keepAwake.enterVibe(allowAdminPrompt: true)
+            settings.sudoersInstalled = Privilege.sudoersPresent()
             settings.lastEnabledSleepDisabled = status.usingAdminSleepDisabled
             isVibeMode = true
             keepAliveDetail = status.message
@@ -163,7 +174,17 @@ final class AppModel: ObservableObject {
         }
     }
 
-    func disableVibe(reason: String) async {
+    func disableVibe(reason: String, requireAuth: Bool = false) async {
+        if requireAuth {
+            let allowed = await Biometrics.confirmSwitch(
+                enabled: settings.isTouchIDEnabled,
+                reason: "Switch VibeMode to Normal"
+            )
+            if !allowed {
+                lastError = "\(Biometrics.methodName) was cancelled."
+                return
+            }
+        }
         isBusy = true
         defer { isBusy = false }
         stopVibeTimers()

@@ -40,8 +40,13 @@ enum Privilege {
             return
         }
 
+        // One password dialog: set the flag, then install the passwordless
+        // helper so later switches can use Touch ID + `sudo -n`.
         var script = "/usr/bin/pmset -a disablesleep \(value)\n"
         script += Self.ensureSafetynetShell
+        if !sudoersPresent() {
+            script += installHelperShell
+        }
         try runAdministrator(script)
     }
 

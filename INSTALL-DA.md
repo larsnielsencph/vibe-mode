@@ -55,8 +55,8 @@ Hvis scriptet fejler: dobbeltklik `VibeMode.xcodeproj`, vælg scheme **VibeMode*
 1. Tilslut iPhone-hotspot **før** du slår Vibe til.
 2. Klik på menulinje-ikonet → **Vibe mode**.
 3. Hvis der ikke er Wi-Fi/hotspot, får du en advarsel. **Cancel** er det rigtige, indtil nettet er på.
-4. Bekræft listen over apps, der skal quitte. Giv admin-adgangskode, når macOS spørger (`SleepDisabled`).
-5. I Settings: slå **Launch VibeMode at login** til.
+4. Bekræft listen over apps, der skal quitte. Brug **Touch ID**, når VibeMode spørger. Første gang kan macOS stadig bede om din kode **én gang**, så appen kan installere en passwordfri helper. Bagefter er fingeraftryk nok.
+5. I Settings: slå **Launch VibeMode at login** til. **Use Touch ID to switch modes** er slået til som standard.
 
 Når det virker, behøver du ikke GitHub eller Xcode til daglig brug. Xcode skal du kun bruge, hvis du henter en ny version og kører `./scripts/install-local.sh` igen.
 
