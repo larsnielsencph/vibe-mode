@@ -1,0 +1,93 @@
+=== OPSLAG 1 TIL PERSONLIG FACEBOOK ===
+Foreslået tidspunkt: 2026-10-15T09:00:00+02:00 (dansk tid)
+Status: Klar til manuel publicering, ikke planlagt
+
+Jeg stod og trænede, da jeg kom til at tænke på, hvor irriteret jeg var over, at mine AI-agenter stoppede, hver gang jeg lukkede computeren for at komme ud ad døren. 🏋️💻
+
+De var i gang med en opgave, men arbejdet stoppede, så snart jeg lukkede låget.
+
+Så jeg byggede Vibe Mode med Grok Bot og Cursor.
+
+Nu kobler jeg min Mac på telefonens hotspot, aktiverer Vibe mode og lukker låget. Så kan jeg cykle afsted, mens agenterne arbejder videre. 🚲
+
+Jeg synes, det er fucking vildt, at jeg kan bygge et værktøj til det, mens jeg står og træner. 🤯
+
+Jeg skal stadig tage stilling til, hvordan appen skal fungere, hvilke programmer den skal holde åbne, og hvordan den får computeren tilbage til normal dvale. Grok Bot og Cursor hjælper mig med at få det bygget.
+
+Kildekoden ligger gratis på GitHub. Du henter den og bygger appen på din egen Mac med Xcode.
+
+👉 Download Vibe Mode her: https://vibemode.larsnielsen.chatgpt.site/
+
+Prøv den gerne. Jeg vil gerne høre i kommentarerne, hvad der fungerer, og hvad jeg skal rette. 💬
+
+=== SLUT ===
+
+=== OPSLAG 2 TIL PERSONLIG FACEBOOK ===
+Foreslået tidspunkt: 2026-10-22T09:00:00+02:00 (dansk tid)
+Status: Klar til manuel publicering, ikke planlagt
+
+Mine AI-agenter stoppede, hver gang jeg lukkede min Mac for at komme ud ad døren. Det var jeg efterhånden ret træt af. 😅
+
+Mens jeg stod og trænede, begyndte jeg at bygge Vibe Mode med Grok Bot og Cursor. En lille app i menulinjen, der holder computeren i gang med lukket låg. 🏋️
+
+Nu forbinder jeg min Mac til telefonens hotspot, vælger Vibe mode og cykler afsted. Agenterne fortsætter deres opgave, mens jeg er på vej. 🚲🤖
+
+Som founder får jeg lyst til at bygge flere af de små værktøjer, jeg selv mangler. Når Grok Bot og Cursor kan hjælpe mig med koden, kan jeg prøve en idé af, mens irritationen stadig er frisk i hovedet.
+
+Jeg synes, det er fucking vildt, hvad man kan lave i dag.
+
+Vibe Mode er gratis og open source. Du bygger selv appen med Xcode, og installationsguiden ligger på siden.
+
+👉 Download Vibe Mode her: https://vibemode.larsnielsen.chatgpt.site/
+
+Hvis du prøver den, må du gerne dele dine erfaringer i kommentarerne. Også det, der driller. 💬
+
+=== SLUT ===
+
+=== OPSLAG 3 TIL PERSONLIG FACEBOOK ===
+Foreslået tidspunkt: 2026-10-29T09:00:00+01:00 (dansk tid)
+Status: Klar til manuel publicering, ikke planlagt
+
+Nu arbejder mine AI-agenter videre, mens jeg sidder på min cykel. 🚲🤖
+
+Før stoppede de, når jeg lukkede min Mac for at komme ud ad døren. Det var ret irriterende, når de allerede var godt i gang med en opgave.
+
+Mens jeg stod og trænede, begyndte jeg derfor at bygge Vibe Mode med Grok Bot og Cursor. 🏋️
+
+Jeg forbinder først computeren til telefonens hotspot, aktiverer Vibe mode i menulinjen og lukker låget. Så fortsætter agenterne og mine terminaljobs, mens jeg er på vej.
+
+Når jeg er færdig, vælger jeg Normal mode, så computeren kan gå i dvale igen. 🌙
+
+Hvis du bruger Cursor, Claude Code eller Codex på en MacBook, kan Vibe Mode måske også være nyttig for dig.
+
+Kildekoden er gratis under MIT-licensen. Projektet er lavet til MacBook Air med Apple Silicon og macOS 14+, og du bygger selv appen med Xcode.
+
+👉 Download Vibe Mode her: https://vibemode.larsnielsen.chatgpt.site/
+
+Jeg tager gerne imod fejlmeldinger, forslag og erfaringer i kommentarerne. 💬
+
+=== SLUT ===
+
+=== OPSLAG 4 TIL PERSONLIG FACEBOOK ===
+Foreslået tidspunkt: 2026-11-05T09:00:00+01:00 (dansk tid)
+Status: Klar til manuel publicering, ikke planlagt
+
+Vibe Mode er ude, og jeg vil gerne have flere til at prøve den. 🚀
+
+Jeg byggede den, fordi jeg var træt af, at mine AI-agenter stoppede, hver gang jeg lukkede computeren for at komme ud ad døren.
+
+Arbejdet med appen begyndte, mens jeg stod og trænede, med hjælp fra Grok Bot og Cursor. Nu kan jeg forbinde min Mac til telefonens hotspot og lade agenterne arbejde videre med lukket låg, mens jeg cykler afsted. 🏋️🚲
+
+Undervejs har jeg arbejdet med detaljerne. Appen skal vise, hvilke programmer den vil lukke. Programmer med ugemte dokumenter skal kunne bede om at gemme. Og jeg skal kunne skifte tilbage til normal dvale.
+
+Det er sådan noget, jeg godt kan lide at få på plads. 🔧
+
+Jeg synes, det er fucking vildt, at jeg kan bygge et værktøj til noget, jeg selv er irriteret over, mens jeg står og træner.
+
+Nu ligger kildekoden gratis på GitHub, så andre også kan bruge og forbedre Vibe Mode.
+
+👉 Download Vibe Mode her: https://vibemode.larsnielsen.chatgpt.site/
+
+Du bygger selv appen med Xcode. Hvis du prøver den, må du gerne lægge en kommentar med din Mac-model og det, du oplever. Så ved jeg, hvad jeg skal arbejde videre med. 💬
+
+=== SLUT ===
