@@ -40,13 +40,12 @@ enum Privilege {
             return
         }
 
-        // One password dialog: set the flag, then install the passwordless
+        // One password dialog: set the flag and (re)write the passwordless
         // helper so later switches can use Touch ID + `sudo -n`.
-        var script = "/usr/bin/pmset -a disablesleep \(value)\n"
-        script += Self.ensureSafetynetShell
-        if !sudoersPresent() {
-            script += installHelperShell
-        }
+        var script = "set -e\n"
+        script += "/usr/bin/pmset -a disablesleep \(value)\n"
+        script += ensureSafetynetShell
+        script += installHelperShell()
         try runAdministrator(script)
     }
 
@@ -54,7 +53,7 @@ enum Privilege {
     /// plus a boot LaunchDaemon that always turns SleepDisabled back off so a
     /// crash + reboot cannot leave the Mac permanently unable to sleep.
     static func installPasswordlessHelper() throws {
-        try runAdministrator(installHelperShell)
+        try runAdministrator(installHelperShell())
     }
 
     static func removePasswordlessHelper() throws {
@@ -104,40 +103,57 @@ enum Privilege {
     static var ensureSafetynetShell: String {
         """
         if [ ! -f \(safetynetPlistPath) ]; then
-        cat > \(safetynetPlistPath) <<'PLIST'
-        \(safetynetPlist)
-        PLIST
-        /usr/sbin/chown root:wheel \(safetynetPlistPath)
-        /bin/chmod 644 \(safetynetPlistPath)
+        \(writeFileShell(to: safetynetPlistPath, contents: safetynetPlist, mode: "644"))
         /bin/launchctl bootout system \(safetynetPlistPath) >/dev/null 2>&1 || true
         /bin/launchctl bootstrap system \(safetynetPlistPath) >/dev/null 2>&1 || /bin/launchctl load \(safetynetPlistPath) >/dev/null 2>&1 || true
         fi
+
         """
     }
 
-    private static var installHelperShell: String {
-        """
+    /// Writes sudoers with printf (no bash heredoc). Swift multiline strings
+    /// strip indent and cannot put a heredoc closer at column 0.
+    static func installHelperShell(for user: String = NSUserName()) -> String {
+        let sudoers = sudoersFile(for: user)
+        return """
         set -e
-        cat > /tmp/vibemode.sudoers <<'EOF'
-        # VibeMode — passwordless toggle of the SleepDisabled flag only.
-        %admin ALL=(root) NOPASSWD: /usr/bin/pmset -a disablesleep 0
-        %admin ALL=(root) NOPASSWD: /usr/bin/pmset -a disablesleep 1
-        EOF
-        /usr/sbin/chown root:wheel /tmp/vibemode.sudoers
-        /bin/chmod 440 /tmp/vibemode.sudoers
+        \(writeFileShell(to: "/tmp/vibemode.sudoers", contents: sudoers, mode: "440"))
         /usr/sbin/visudo -cf /tmp/vibemode.sudoers
         /bin/mv /tmp/vibemode.sudoers \(sudoersPath)
         /usr/sbin/chown root:wheel \(sudoersPath)
         /bin/chmod 440 \(sudoersPath)
-
-        cat > \(safetynetPlistPath) <<'PLIST'
-        \(safetynetPlist)
-        PLIST
-        /usr/sbin/chown root:wheel \(safetynetPlistPath)
-        /bin/chmod 644 \(safetynetPlistPath)
+        \(writeFileShell(to: safetynetPlistPath, contents: safetynetPlist, mode: "644"))
         /bin/launchctl bootout system \(safetynetPlistPath) >/dev/null 2>&1 || true
         /bin/launchctl bootstrap system \(safetynetPlistPath) >/dev/null 2>&1 || /bin/launchctl load \(safetynetPlistPath) >/dev/null 2>&1 || true
+
         """
+    }
+
+    static func sudoersFile(for user: String) -> String {
+        let name = sanitizedUser(user)
+        return [
+            "# VibeMode passwordless SleepDisabled toggle only.",
+            "\(name) ALL=(root) NOPASSWD: /usr/bin/pmset -a disablesleep 0",
+            "\(name) ALL=(root) NOPASSWD: /usr/bin/pmset -a disablesleep 1",
+            "%admin ALL=(root) NOPASSWD: /usr/bin/pmset -a disablesleep 0",
+            "%admin ALL=(root) NOPASSWD: /usr/bin/pmset -a disablesleep 1",
+        ].joined(separator: "\n")
+    }
+
+    private static func sanitizedUser(_ user: String) -> String {
+        let allowed = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "._-"))
+        let ok = !user.isEmpty && user.unicodeScalars.allSatisfy { allowed.contains($0) }
+        return ok ? user : "unknown"
+    }
+
+    private static func writeFileShell(to path: String, contents: String, mode: String) -> String {
+        "/usr/bin/printf '%s\\n' \(shQuote(contents)) > \(path)\n"
+            + "/usr/sbin/chown root:wheel \(path)\n"
+            + "/bin/chmod \(mode) \(path)\n"
+    }
+
+    private static func shQuote(_ value: String) -> String {
+        "'" + value.replacingOccurrences(of: "'", with: "'\\''") + "'"
     }
 
     private static var removeHelperShell: String {

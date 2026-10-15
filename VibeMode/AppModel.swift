@@ -133,14 +133,18 @@ final class AppModel: ObservableObject {
             }
         }
 
-        let allowed = await Biometrics.confirmSwitch(
-            enabled: settings.isTouchIDEnabled,
-            reason: "Switch VibeMode to Vibe"
-        )
-        if !allowed {
-            statusLine = "Normal · \(Biometrics.methodName) cancelled"
-            lastError = "\(Biometrics.methodName) was cancelled."
-            return
+        if !Privilege.sudoersPresent() {
+            statusLine = "Normal · one password to enable \(Biometrics.methodName)"
+        } else {
+            let allowed = await Biometrics.confirmSwitch(
+                enabled: settings.isTouchIDEnabled,
+                reason: "Switch VibeMode to Vibe"
+            )
+            if !allowed {
+                statusLine = "Normal · \(Biometrics.methodName) cancelled"
+                lastError = "\(Biometrics.methodName) was cancelled."
+                return
+            }
         }
 
         isBusy = true
@@ -175,7 +179,7 @@ final class AppModel: ObservableObject {
     }
 
     func disableVibe(reason: String, requireAuth: Bool = false) async {
-        if requireAuth {
+        if requireAuth, Privilege.sudoersPresent() {
             let allowed = await Biometrics.confirmSwitch(
                 enabled: settings.isTouchIDEnabled,
                 reason: "Switch VibeMode to Normal"

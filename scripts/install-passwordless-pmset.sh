@@ -6,8 +6,11 @@ set -euo pipefail
 SUDOERS=/etc/sudoers.d/vibemode
 PLIST=/Library/LaunchDaemons/dk.lars.vibemode.safetynet.plist
 
-cat > /tmp/vibemode.sudoers <<'EOF'
-# VibeMode — passwordless toggle of the SleepDisabled flag only.
+USER_NAME="$(/usr/bin/id -un)"
+cat > /tmp/vibemode.sudoers <<EOF
+# VibeMode — passwordless SleepDisabled toggle only.
+${USER_NAME} ALL=(root) NOPASSWD: /usr/bin/pmset -a disablesleep 0
+${USER_NAME} ALL=(root) NOPASSWD: /usr/bin/pmset -a disablesleep 1
 %admin ALL=(root) NOPASSWD: /usr/bin/pmset -a disablesleep 0
 %admin ALL=(root) NOPASSWD: /usr/bin/pmset -a disablesleep 1
 EOF

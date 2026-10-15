@@ -37,7 +37,9 @@ struct SettingsView: View {
                 ))
                 .disabled(!Biometrics.isAvailable)
                 Text(Biometrics.isAvailable
-                     ? "Fingerprint instead of typing your Mac password. The first switch may still ask for the password once, so VibeMode can install a password-free helper. After that, \(Biometrics.methodName) is enough. Battery and heat auto-revert skip this."
+                     ? Privilege.sudoersPresent()
+                        ? "Mode switches use \(Biometrics.methodName) only. Battery and heat auto-revert skip this."
+                        : "The first switch asks for your Mac password once to install a tiny helper. After that, only \(Biometrics.methodName) — not both."
                      : "No fingerprint is enrolled on this Mac. Add one in System Settings → Touch ID, or keep using the password dialog.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
